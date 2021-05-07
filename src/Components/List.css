@@ -15,13 +15,31 @@ input {
 
 .list {
     margin-top: 10px;
-    border: 2px solid rgb(147, 148, 147);
-    border-radius: 50px;
+   
+}
+
+.list li{
+    width: 100%;
+    border: 2px solid grey;
+    border-radius: 15px;
+    padding-inline: 8px;
+    margin-bottom: 5px;
 
 }
 
-.list li {
-    margin-left: 15px;
-    margin-right: 15px;
-    padding: 5px;
+.list li span {
+    display: block;
+
+}
+
+.list li span.phone{
+
+    float: right;
+
+}
+.list li span.name{
+    float: left;
+}
+.clearfix{
+    clear: both;
 }
