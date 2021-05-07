@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./Form.css"
 
 export default class Form extends Component {
     state = {
@@ -8,7 +9,10 @@ export default class Form extends Component {
         return (
             <div>
                 <form>
-                    <input name={"name"}></input>
+                    <input name={"name"} id="name" placeholder="Type a name"></input>
+                    <br/>   
+                    <input name={"phone"} id="phone" placeholder="Type a phone"></input>        
+                    <button>add</button>        
                 </form>
             </div>
         )
