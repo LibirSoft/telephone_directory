@@ -22,6 +22,10 @@ export default class Form extends Component {
         this.props.addContact({
             ...this.state
         })
+        this.setState({
+            name: "",
+            phone: ""
+        })
     }
     render() {
         return (
