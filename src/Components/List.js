@@ -1,31 +1,52 @@
 import React, { Component } from "react";
 import "./List.css";
+import PropTypes from "prop-types"
 
 export default class List extends Component {
+  static propTypes = {
+
+    contacts: PropTypes.array.isRequired,
+
+  };
+  state = {
+    filterText: ""
+
+
+  };
+
+  onfilterchange = (event) => {
+    this.setState({
+      filterText: event.target.value
+    })
+  }
+
   render() {
+    const filteredContacts = this.props.contacts.filter(
+      contact => {
+        return contact.name.toLowerCase().indexOf(this.state.filterText.toLowerCase()) !== -1;
+      })
+
     return (
       <div className={"listArea"}>
         <input
+          value={this.state.filterText}
+          onChange={this.onfilterchange}
           name={"filter"}
           id={"filter"}
           placeholder={" filter by name or phone"}
         />
         <ul className={"list"}>
-          <li>
-            <span className={"name"}>Yuşa Kopuz</span>
-            <span className={"phone"}>12345678912</span>
-            <span className={"clearfix"}></span>
-          </li>
-          <li>
-            <span className={"name"}>G-hot Özdemir</span>
-            <span className={"phone"}>12345678913</span>
-            <span className={"clearfix"}></span>
-          </li>
-          <li>
-            <span className={"name"}>Vatu Oksüz</span>
-            <span className={"phone"}>12345678914</span>
-            <span className={"clearfix"}></span>
-          </li>
+          {
+            filteredContacts.map(contact => {
+              return (
+                <li key={contact.phone}>
+                  <span className={"name"}>{contact.name}</span>
+                  <span className={"phone"}>{contact.phone}</span>
+                  <span className={"clearfix"}></span>
+                </li>
+              )
+            })
+          }
         </ul>
       </div>
     );
